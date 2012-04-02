@@ -3,9 +3,9 @@
 S3 = {}
 if File.exists?("#{Rails.root}/config/s3.yml")
   s3_config = YAML.load_file("#{Rails.root}/config/s3.yml")
-  S3[:key] = s3_config[Rails.env]['key']
-  S3[:secret] = s3_config[Rails.env]['secret']
-  S3[:tag] = s3_config[Rails.env]['tag']
+  S3[:key] = s3_config[::Rails.env]['key']
+  S3[:secret] = s3_config[::Rails.env]['secret']
+  S3[:tag] = s3_config[::Rails.env]['tag']
   # S3[:bucket] = s3_config[Rails.env]['bucket']
 else
   S3[:key] = ENV['S3_KEY']
@@ -15,4 +15,4 @@ else
 end
 
 ENV['AWS_URL'] = "http://webservices.amazon.com/onca/xml"
-ENV['AMAZON_TRACKING_ID'] = "wish0a-20"
+#ENV['AMAZON_TRACKING_ID'] = "wish0a-20"

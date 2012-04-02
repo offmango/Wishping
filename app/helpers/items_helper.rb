@@ -12,7 +12,7 @@ module ItemsHelper
 
 
 	def amazon_link(asin)
-		"http://www.amazon.com/gp/product/#{asin}?tag=#{ENV['AMAZON_TRACKING_ID']}"
+		"http://www.amazon.com/gp/product/#{asin}?tag=#{S3[:tag]}"
 	end
 	
 end
