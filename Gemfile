@@ -24,6 +24,8 @@ gem 'cancan'
 gem 'httparty'
 gem 'ruby-hmac'
 gem 'nokogiri'
+gem 'aws-s3'
+
 #gem 'ruby-aws'
 
 # You know...for charts!
