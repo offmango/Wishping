@@ -1,0 +1,23 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  hello: "Hello world"
+
+  date:
+      formats:
+        default: "%a, %b %d"
+        short: "%b %d, %Y"
+        long: "%B %d, %Y"
+        date_time12: "%m-%d-%Y %I:%M%p"
+        date_time24: "%m-%d-%Y %H:%M"
+
+  datetime:
+      formats:
+        date_time12: "%m-%d-%Y %I:%M%p"
+        date_time24: "%m-%d-%Y %H:%M"
+
+  unauthorized:
+    manage:
+      all: "Not authorized to %{action} %{subject}."
+      user: "Not allowed to manage other user accounts."

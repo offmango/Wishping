@@ -1,0 +1,18 @@
+<div class = "home-image">
+	<img src = "/wishping_400.png" />
+</div>
+
+<h1>Welcome to WishPing</h1>
+
+<p>
+	Want to track the prices of stuff you want to buy from Amazon?  You're at the right place.
+</p>
+
+<% if user_signed_in? %>
+	<p>
+		Now that I'm logged in, I can see other cool stuff, such as this:
+	</p>
+	<p>
+		<%= link_to "Take me to my WishPing page", user_path(current_user) %>
+	</p>
+<% end %>

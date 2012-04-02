@@ -1,0 +1,57 @@
+<%= form_for(@item) do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br />
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :manufacturer %><br />
+    <%= f.text_field :manufacturer %>
+  </div>
+  <div class="field">
+    <%= f.label :seller %><br />
+    <%= f.text_field :seller %>
+  </div>
+  <div class="field">
+    <%= f.label :lowest_price %><br />
+    <%= f.text_field :lowest_price %>
+  </div>
+  <div class="field">
+    <%= f.label :highest_price %><br />
+    <%= f.text_field :highest_price %>
+  </div>
+  <div class="field">
+    <%= f.label :current_price %><br />
+    <%= f.text_field :current_price %>
+  </div>
+  <div class="field">
+    <%= f.label :price_updated_at %><br />
+    <%= f.datetime_select :price_updated_at %>
+  </div>
+  <div class="field">
+    <%= f.label :asin %><br />
+    <%= f.text_field :asin %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

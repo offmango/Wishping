@@ -1,0 +1,78 @@
+<h1>Listing items</h1>
+
+<%= form_for :item, :html => {:method => :get}  do |f| %>
+    <p>
+        <%= f.label :asin, "Amazon ASIN" %>: <%= f.text_field :asin, :size => 10 %> 
+        <%= f.submit "Look up item" %>
+    </p>
+<% end %>
+
+<% if @amazon_items.present? && !@amazon_error.present? %>
+    <% @amazon_items.each do |amazon_item| %>
+        <%= form_for :amazon_item, :url => { :controller => 'items', :action => 'add_amazon_item', :name => amazon_item[1]["Items"]["Item"]["ItemAttributes"]["Title"], :price => amazon_item[1]["Items"]["Item"]["OfferSummary"]["LowestNewPrice"]["Amount"], :asin => amazon_item[1]["Items"]["Request"]["ItemLookupRequest"]["ItemId"]} do |add_form| %>
+            <p>
+                <strong>Item:</strong> <%= amazon_item[1]["Items"]["Item"]["ItemAttributes"]["Title"] %><br />
+                <strong>List Price:</strong> <%= amazon_item[1]["Items"]["Item"]["ItemAttributes"]["ListPrice"]["FormattedPrice"] %><br />
+                <strong>Current Lowest New Price:</strong> <%= amazon_item[1]["Items"]["Item"]["OfferSummary"]["LowestNewPrice"]["FormattedPrice"] %>
+            </p>
+            <%= add_form.submit "Add to My Items" %>
+        <% end %>
+    <% end %>
+<% elsif @amazon_error.present? %>
+    <div class = "amazon_error">
+        <%= @amazon_error %>
+    </div>
+<% end %>
+<br />
+<br />
+
+<% if @items.present? %>
+    <h2>My Items</h2>
+    <table id = "my-item-list" >
+        <tbody>
+            <tr>
+                <th>
+                    Item
+                </th>
+                <th>
+                    Current Price
+                </th>
+                <th>
+                    Last Updated
+                </th>
+                <th>
+                    Highest Price
+                </th>
+                <th>
+                    Lowest Price
+                </th>
+            </tr>
+            <% @items.each do |item| %>
+                <tr class="<%= "#{cycle('list-line-odd', 'list-line-even')} #{row_class(item)}" %>" >
+                    <td>
+                        <%= item.name %>
+                    </td>
+                    <td>
+                        <%= number_to_currency(item.current_price) %>
+                    </td>
+                    <td>
+                        <%= item.price_updated_at.to_formatted_s(:long) %>
+                    </td>
+                    <td class = "highest-price">
+                        <%= number_to_currency(item.highest_price) %>
+                    </td>
+                    <td class = "lowest-price">
+                        <%= number_to_currency(item.lowest_price) %>
+                    </td>
+                    <td>
+                        <%= button_to "Remove", user_item_path(current_user, item), confirm: "Are you sure you want to remove #{item.name} from your list?", method: :delete%>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <p>
+        You haven't added any Amazon items to your list. 
+    </p>
+<% end %>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wishping</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+	<div id = "auth-bar">
+		<ul class = "hmenu">
+			<% if user_signed_in? %>
+			    <li>
+			    	Signed in as <strong><%= current_user.email %></strong>. Not you?
+			  		<%= link_to "Sign out", destroy_user_session_path, :method => :delete  %>
+			  	</li>
+			<% else %>
+			    <li><%= link_to "Sign up", new_user_registration_path %> or </li>
+			    <li>Sign in via <%= link_to "Email", new_user_session_path %> </li>
+			    <li><%= link_to image_tag("/facebook_64.png", :size => "32x32", :alt => "Facebook"), user_omniauth_authorize_path(:facebook) %></li>
+			<% end %>
+		</ul>
+	</div>
+	
+	<%- flash.each do |name, msg| -%>
+	    <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+	<%- end -%>
+	
+	<%= yield %>
+
+</body>
+</html>

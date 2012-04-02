@@ -1,0 +1,62 @@
+<% if @items.present? %>
+    <h2>My Items</h2>
+    <p>
+        <%= button_to "Get the current Amazon price", update_prices_path(@user) %>
+    </p>
+    <table id = "my-item-list" >
+        <tbody>
+            <tr>
+                <th>
+                    Item
+                </th>
+                <th>
+                    Current Price
+                </th>
+                <th>
+                    Last Updated
+                </th>
+                <th>
+                    Highest Price
+                </th>
+                <th>
+                    Lowest Price
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+                <th>
+                    &nbsp;
+                </th>
+            </tr>
+            <% @items.each do |item| %>
+                <tr class="<%= "#{cycle('list-line-odd', 'list-line-even')} #{row_class(item)}" %>" >
+                    <td>
+                        <%= link_to item.name, item_path(item) %>
+                    </td>
+                    <td>
+                        <%= number_to_currency(item.current_price) %>
+                    </td>
+                    <td>
+                        <%= item.price_updated_at.to_formatted_s(:long) %>
+                    </td>
+                    <td class = "highest-price">
+                        <%= number_to_currency(item.highest_price) %>
+                    </td>
+                    <td class = "lowest-price">
+                        <%= number_to_currency(item.lowest_price) %>
+                    </td>
+                    <td>
+                        <%= link_to image_tag("/assets/buy_amazon.gif"), amazon_link(item.asin) %>
+                    </td>
+                    <td>
+                        <%= button_to "Remove", user_item_path(@user, item), confirm: "Are you sure you want to remove #{item.name} from your list?", method: :delete%>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% else %>
+    <p>
+        You haven't added any Amazon items to your list. 
+    </p>
+<% end %>

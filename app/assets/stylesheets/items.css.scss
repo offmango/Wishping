@@ -1,0 +1,57 @@
+// Place all the styles related to the Items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.amazon_error {
+	padding: 5px 8px;
+	margin: 10px 150px 10px 20px;
+	font-size: 11px;
+ 	font-weight: bold;
+	background-color: #FCC;
+  	border: solid 1px #C66;
+  	color: #8E2323;
+	text-transform: uppercase;
+}
+
+#my-item-list table {
+	border: none;
+}
+
+#my-item-list tbody tr td {
+	font-size: 8pt;
+	padding: 5px 3px;
+}
+
+#my-item-list tbody th {
+	font-size: 8pt;
+	padding: 5px 3px;
+	font-weight: bold;
+	background-color: #146EB4;
+	color: #FFFFFF;
+}
+
+#my-item-list tbody tr.selected td {
+	background-color: #3d80df;
+	color: #ffffff;
+	font-weight: bold;
+	border-left: 1px solid #346DBE;
+	border-bottom: 1px solid #7DAAEA;
+}
+
+#my-item-list tbody tr.list-line-odd {
+	background-color: #FFFFFF;
+}
+
+#my-item-list tbody tr.list-line-even {
+	background-color: #CADEED;
+}
+
+#my-item-list tbody tr.highest-price {
+	color: red;
+	font-weight: bold;
+}
+
+#my-item-list tbody tr.lowest-price {
+	color: green;
+	font-weight: bold;
+}

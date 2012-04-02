@@ -1,0 +1,55 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *= require_self
+ *= require_tree . 
+*/
+
+body {
+	font-family: Arial, "MS Trebuchet", sans-serif;
+	margin: 0px 225px 10px 150px;
+}
+
+#auth-bar {
+	color: #656565;
+	background-color: #eeeeff;
+  	font-size: 12px;
+  	margin: 0px 0px 15px 0px;
+  	padding: 5px 30px;
+  	text-transform: uppercase;
+}
+
+ul.hmenu {
+	list-style: none;	
+	margin: 0 0 2em;
+	padding: 0;
+}
+
+ul.hmenu li {
+	display: inline;  
+}
+
+ul.hmenu li img{
+	position: relative; 
+	top: 10px; 
+}
+
+#flash_notice, #flash_alert {
+	padding: 5px 8px;
+	margin: 10px 150px 10px 20px;
+	font-size: 13px;
+ 	font-weight: bold;
+}
+
+#flash_notice {
+  	background-color: #CFC;
+  	border: solid 1px #6C6;
+  	color: #004F00;
+}
+
+#flash_alert {
+  	background-color: #FCC;
+  	border: solid 1px #C66;
+  	color: #8E2323;
+}

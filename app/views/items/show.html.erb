@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>Name:</b>
+  <%= @item.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @item.description %>
+</p>
+
+<p>
+  <b>Lowest price:</b>
+  <%= @item.lowest_price %>
+</p>
+
+<p>
+  <b>Highest price:</b>
+  <%= @item.highest_price %>
+</p>
+
+<p>
+  <b>Current price:</b>
+  <%= @item.current_price %>
+</p>
+
+<p>
+  <b>Price updated at:</b>
+  <%= @item.price_updated_at %>
+</p>
+
+<p>
+  <b>Asin:</b>
+  <%= @item.asin %>
+</p>
+<p>
+  <%= image_tag(Gchart.line(:data => @price_array)) %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>

@@ -1,0 +1,25 @@
+<%= form_for :item, :html => {:method => :get}  do |f| %>
+    <p>
+        <%= f.label :asin, "Amazon ASIN" %>: <%= f.text_field :asin, :size => 10 %> 
+        <%= f.submit "Look up item" %>
+    </p>
+<% end %>
+
+<% if amz_item.present? %>
+    <% if amz_item["errors"].present? %>
+        <div class = "amazon_error">
+            <%= amz_item["errors"] %>
+        </div>
+    <% else %>
+        <%= form_for :amazon_item, :url => { :controller => 'users', :action => 'add_amazon_item', :name => amz_item["title"], :price => amz_item["amazon_price"], :asin => amz_item["asin"]} do |add_form| %>
+            <p>
+                <strong>Item:</strong> <%= amz_item["title"] %><br />
+                <strong>List Price:</strong> <%= number_to_currency(amz_item["list_price"]) %><br />
+                <strong>Current Lowest New Price:</strong> <%= number_to_currency(amz_item["amazon_price"]) %>
+            </p>
+            <%= add_form.submit "Add to My Items" %>
+        <% end %>
+    <% end %>
+<% end %>
+<br />
+<br />
