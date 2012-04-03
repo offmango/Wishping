@@ -23,7 +23,7 @@ class Item < ActiveRecord::Base
       'Operation' => 'ItemSearch',
       'SearchIndex' => search_index,
       'Service' => 'AWSECommerceService',
-      'Timestamp' => Time.now.iso8601,    # TIME HAS TO BE IN ISO8601 or signature won't match
+      'Timestamp' => Time.now.utc.iso8601,    # TIME HAS TO BE IN ISO8601 or signature won't match
       'Version' => '2011-08-01'
     }
     canonical_querystring = create_canonical_querystring(url_params)
@@ -46,7 +46,7 @@ class Item < ActiveRecord::Base
       'ItemId' => asin,
       'ResponseGroup' => response_group,
       'Service' => 'AWSECommerceService',
-      'Timestamp' => Time.now.iso8601,    # TIME HAS TO BE IN ISO8601 or signature won't match
+      'Timestamp' => Time.now.utc.iso8601,    # TIME HAS TO BE IN ISO8601 or signature won't match
       'Version' => '2011-08-01'
     }
     canonical_querystring = create_canonical_querystring(url_params)
