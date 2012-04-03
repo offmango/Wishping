@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
 
 	def admin?
-		#self.email == "offmango@me.com"
+		self.role == "admin"
 	end
 
 

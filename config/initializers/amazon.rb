@@ -1,5 +1,10 @@
+# SECRETS!  ADD THIS FILE TO YOUR .GITIGNORE!  IT SHOULD NOT BE COMMITTED!
+#
 # If an s3.yml file exists, use the key, secret key, and bucket values from there.
 # Otherwise, pull them from the environment.]
+#
+# To set environment variables on Heroku, see https://devcenter.heroku.com/articles/config-vars
+
 S3 = {}
 if File.exists?("#{Rails.root}/config/s3.yml")
   s3_config = YAML.load_file("#{Rails.root}/config/s3.yml")
@@ -15,4 +20,3 @@ else
 end
 
 ENV['AWS_URL'] = "http://webservices.amazon.com/onca/xml"
-#ENV['AMAZON_TRACKING_ID'] = "wish0a-20"
