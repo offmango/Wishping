@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
 		item = self.items.build
     	item.name = params[:name]
     	item.asin = params[:asin]
-    	item.current_price = params[:price].to_f / 100.0
+    	item.current_price = params[:price]
     	item.highest_price = item.current_price
     	item.lowest_price = item.current_price
     	item.price_updated_at = Time.now

@@ -144,7 +144,7 @@ class Item < ActiveRecord::Base
 
 
   # Get an Amazon item's attributes via asin;
-  # - returns a string if there's an error, otherwise returns the price as a boolean
+  # - returns a string if there's an error, otherwise returns the price as a boolean in dollars
   def self.get_amazon_item_price(asin)
     amazon_lookup_response = self.amazon_item_lookup(asin, "Offers")
     amazon_error = amazon_lookup_error(amazon_lookup_response)
