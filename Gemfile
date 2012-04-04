@@ -43,6 +43,9 @@ gem 'googlecharts'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+# Webserver recommended for Heroku; see https://devcenter.heroku.com/articles/rails3
+gem 'thin'
+
 group :production do
   # gems specifically for Heroku go here
   gem "pg"
